@@ -1,0 +1,864 @@
+html { height: 100%; }
+
+body { 
+	min-height: 100%; 
+	color:white;
+	text-rendering: optimizeLegibility;
+}
+
+a{
+text-decoration: none;
+color:blue;
+}
+
+
+@font-face {
+	font-family: 'Pilowlava'; 
+	font-weight: normal; 
+	src: url("../../FontBase/Pilowlava-Regular.otf") format('opentype'); 
+}
+
+#container {
+    height: 550px;/*Only for the demo.*/
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+
+/*image grid*/
+
+.column{	
+  float: left;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/*page grid layout*/
+
+.wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns:repeat(46, 1fr);
+  grid-auto-flow: row;
+  bottom:0;
+  right:0;
+  border-left-style: solid;
+  border-left-width: thin;
+  overflow-x: hidden;
+}
+
+.box {
+  color:transparent;
+}
+
+
+/*----------------------------------navigation----------------------------------*/
+
+.nav{
+  position:fixed;
+  font-weight: 600;
+  font-family: stevie-sans, sans-serif;
+  font-size: calc(.35vw + .35vh + .35vmin);
+  resize: both;
+  color:blue;	
+  padding: calc(.35vw + .35vh + .35vmin);
+  text-align: left;
+  overflow-x:scroll;
+
+}
+
+.flip{
+
+  font-weight: 600;
+  font-family: stevie-sans, sans-serif;
+  font-size: calc(.35vw + .35vh + .35vmin);
+  color:blue;	
+  overflow-x: hidden;
+  padding-top: 40px;
+  padding: 10px;
+  overflow: scroll;
+  right:0;
+  position: static;
+}
+
+
+.dropdown {
+
+  display: block;
+  position:relative;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  writing-mode: vertical-lr;
+  text-orientation: sideways;
+}
+
+.dropdown a{
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  background-color: #f9f9f9;
+  min-width: 3vw;
+  padding: .5vw;
+  z-index: 1;
+  color: black;
+  writing-mode: horizontal-tb;
+
+  position: relative;
+  float: top;
+}
+
+.dropdown:hover .dropdown-content {
+  display:block;
+}
+
+
+/*----------------------------------cover ----------------------------------*/
+
+
+.page-two-cover{
+  height: 100%;
+  grid-column: 25 /span 21;
+  box-shadow: -10px 0 18px -2px #000;
+  border-right-style: solid;
+  border-right-width: thin;
+  border-right-color: blue;
+  border-left-style: solid;
+  border-left-width: thin;
+  border-left-color: blue;
+  padding-left: 3.5vw;
+  padding-right: 3.5vw;
+  background-image: url("../images/TOC/12.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.spine{
+  grid-column: 23 /span 2;
+  background-image: url("../images/TOC/spine3.png");
+  background-color:blue;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  border-right-style: solid;
+  border-right-width: thin;
+  border-right-color: blue;
+  border-left-style: solid;
+  border-left-width: thin;
+  border-left-color: blue;
+}
+
+.page-one-cover{
+  height: 100vh;
+  grid-column: 2 /span 21;
+  box-shadow: 10px 0 18px -2px #000;
+  border-right-style: solid;
+  border-right-width: thin;
+  border-right-color: blue;
+  border-left-style: solid;
+  border-left-width: thin;
+  border-left-color: blue;
+  overflow: hidden;
+  padding-left: 3.5vw;
+  padding-right: 3.5vw;
+  background-image: url("../images/TOC/12.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+
+
+
+/*----------------------------------split pages ----------------------------------*/
+
+
+.page-one{
+  height: 100%;
+  box-shadow: 10px 0 18px -2px #888;
+  grid-column: 2 /span 22;
+  border-left-style: solid;
+  border-left-width: thin;
+  border-left-color: blue;
+  padding-left: 3.5vw;
+  padding-right: 3.5vw;
+}
+
+.page-two{
+  height: 100%;
+  border-left-style: solid;
+  border-left-width: thin;
+  border-left-color:#A8A8A8;
+  box-shadow: -10px 0 18px -2px #888;
+  grid-column: 24 /span 22;
+  border-right-style: solid;
+  border-right-width: thin;
+  border-right-color: blue;
+  padding-left: 3.5vw;
+  padding-right: 3.5vw;
+}
+
+.page-one-scroll{
+  height: 100%;
+  box-shadow: 10px 0 18px -2px #888;
+  grid-column: 2 /span 22;
+  border-left-style: solid;
+  border-left-width: thin;
+  border-left-color: blue;
+  overflow:auto;
+  padding-left: 3.5vw;
+  padding-right: 3.5vw;
+}
+
+.page-two-scroll{
+  height: 100%;
+  border-left-style: solid;
+  border-left-width: thin;
+  box-shadow: -10px 0 18px -2px #888;
+  grid-column: 24 /span 22;
+  border-right-style: solid;
+  border-right-width: thin;
+  border-right-color: blue;
+  border-left-color:#A8A8A8;
+  overflow: auto;
+  padding-left: 3.5vw;
+  padding-right: 3.5vw;
+}
+
+.page-one-sync{
+  height: 100%;
+  box-shadow: 10px 0 18px -2px #888;
+  grid-column: 2 /span 22;
+  border-left-style: solid;
+  border-left-width: thin;
+  border-left-color: blue;
+  overflow: hidden;
+  padding-left: 3.5vw;
+  padding-right: 3.5vw;
+}
+
+.page-two-sync{
+  height: 100%;
+  border-left-style: solid;
+  border-left-width: thin;
+  box-shadow: -10px 0 18px -2px #888;
+  grid-column: 24 /span 22;
+  border-right-style: solid;
+  border-right-width: thin;
+  border-right-color: blue;
+  border-left-color:#A8A8A8;
+  padding-left: 3.5vw;
+  padding-right: 3.5vw;
+}
+
+
+/*----------------------------------split pages with background images----------------------------------*/
+
+.page-one-recharge{
+  height: 100%;
+  box-shadow: 10px 0 18px -2px #888;
+  grid-column: 2 /span 22;
+  border-left-style: solid;
+  border-left-width: thin;
+  border-left-color: blue;
+  overflow: hidden;
+  padding-left: 3.5vw;
+  padding-right: 3.5vw;
+  background-image: url("../images/2028-Bad Metaphor/recharge.gif");
+  background-size: cover;
+}
+
+.page-one-fantasies{
+  height: 100vh;
+  box-shadow: 10px 0 18px -2px #888;
+  grid-column: 2 /span 22;
+  border-left-style: solid;
+  border-left-width: thin;
+  border-left-color: blue;
+  overflow: hidden;
+  padding-left: 3.5vw;
+  padding-right: 3.5vw;
+  background-image: url("../images/2029-Fitting in the World/HarmfulAshamedBobwhite-size_restricted.gif");
+  background-size: cover;
+}
+
+.page-one-electrify{
+  height: 100vh;
+  box-shadow: 10px 0 18px -2px #888;
+  grid-column: 2 /span 22;
+  border-left-style: solid;
+  border-left-width: thin;
+  border-left-color: blue;
+  overflow: hidden;
+  padding-left: 3.5vw;
+  padding-right: 3.5vw;
+  background-image: url("../images/2024-Electrify Everything/earth.gif");
+  background-size: cover;
+}
+
+.page-one-walk{
+  height: 100vh;
+  box-shadow: 10px 0 18px -2px #888;
+  grid-column: 2 /span 22;
+  border-left-style: solid;
+  border-left-width: thin;
+  border-left-color: blue;
+  overflow: hidden;
+  padding-left: 3.5vw;
+  padding-right: 3.5vw;
+  background-image: url("../images/2025-Car Free Zones/carfree.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+.page-one-notthis{
+  height: 100vh;
+  box-shadow: 10px 0 18px -2px #888;
+  grid-column: 2 /span 22;
+  border-left-style: solid;
+  border-left-width: thin;
+  border-left-color: blue;
+  overflow: hidden;
+  padding-left: 3.5vw;
+  padding-right: 3.5vw;
+  background-image: url("../images/2029-not this/nothis.gif");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+
+.page-one-toc{
+  height: 100vh;
+  box-shadow: 10px 0 18px -2px #000;
+  grid-column: 2 /span 22;
+  border-left-style: solid;
+  border-left-width: thin;
+  border-left-color: blue;
+  overflow: hidden;
+  padding-left: 3.5vw;
+  padding-right: 3.5vw;
+  background-image: url("../images/TOC/12.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.page-one-rural{
+  height: 100vh;
+  box-shadow: 10px 0 18px -2px #888;
+  grid-column: 2 /span 22;
+  border-left-style: solid;
+  border-left-width: thin;
+  border-left-color: blue;
+  overflow: hidden;
+  padding-left: 3.5vw;
+  padding-right: 3.5vw;
+  background-image: url("../images/2024-Rural Electrification/LBeall-REA1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.page-one-backpack{
+  height: 100vh;
+  box-shadow: 10px 0 18px -2px #888;
+  grid-column: 2 /span 22;
+  border-left-style: solid;
+  border-left-width: thin;
+  border-left-color: blue;
+  overflow: hidden;
+  padding-left: 3.5vw;
+  padding-right: 3.5vw;
+  background-image: url("../images/2020-Bags/backpack.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/*----------------------------------long text and interview layout----------------------------------*/
+
+
+.intro{
+  height: 100vh;
+  padding-left: 3vw;
+  padding-right: 3vw;
+  grid-column: 2 /span 11;
+  border-left-style: solid;
+  border-left-width: thin;
+  border-left-color: blue;
+  box-shadow: 10px 0 18px -9px #888;
+}
+
+
+
+.long-page-two{
+  height: 100%;
+  padding-left: 3.5vw;
+  padding-right: 3.5vw;
+  grid-column: 13 /span 33;
+  box-shadow: -10px 0 18px -9px #888;
+  border-left-style: solid;
+  border-left-width: thin;
+  border-left-color:#A8A8A8;
+  overflow-x: auto;
+  border-right-style: solid;
+  border-right-width: thin;
+  border-right-color:blue;
+}
+
+/*----------------------------------immersive project layouts----------------------------------*/
+
+.proj-main-com{
+  grid-column: 2 /span 45;
+  height: 100vh;
+  background-image:url("../images/2023-Ten Sus Com/Comp 1.gif");
+  background-repeat: no-repeat;
+  background-size: cover; 
+  text-align: center;
+  vertical-align: middle;
+  border-left-style: solid;
+  border-left-color: blue;
+  border-left-width: thin;
+}
+
+.proj-main-time{
+  grid-column: 2 /span 45;
+  height: 100vh;
+  background-image:url("../images/2023-Sensorial Time Travel/rock-movie.gif");
+  background-repeat: no-repeat;
+  background-size: cover; 
+  text-align: center;
+  vertical-align: middle;
+  border-left-style: solid;
+  border-left-color: blue;
+  border-left-width: thin;
+}
+
+.proj-main-sound{
+  grid-column: 2 /span 45;
+  height: 100vh;
+	background-image:url("../images/2023-City of Silence/Comp 1.gif");
+  background-repeat: no-repeat;
+  background-size: cover; 
+  text-align: center;
+  vertical-align: middle;
+  border-left-style: solid;
+  border-left-color: blue;
+  border-left-width: thin;
+}
+
+.proj-box-two{
+  box-shadow: 10px 0 18px -2px #888;
+  grid-column: 2 /span 22;
+  border-left-style: solid;
+  border-left-width: thin;
+  border-left-color: blue;
+  padding-left: 3.5vw;
+  padding-right: 3.5vw;
+  overflow-x: hidden;
+}
+
+.proj-box-three{
+  height: 100vh;
+  box-shadow: -10px 0 18px -2px #888;
+  grid-column: 24 /span 22;
+  border-right-style: solid;
+  border-right-color: blue;
+  border-right-width: thin;
+  overflow-x: auto;
+  border-left-style: solid;
+  border-left-width: thin;
+  border-left-color:#A8A8A8;
+  padding-left: 3.5vw;
+  padding-right: 3.5vw;
+}
+
+.proj-box-two-black{
+  box-shadow: 10px 0 18px -2px #888;
+  grid-column: 2 /span 22;
+  border-left-style: solid;
+  border-left-width: thin;
+  border-left-color: blue;
+  overflow:hidden;
+  padding-left: 3.5vw;
+  padding-right: 3.5vw;
+  background-color: black;
+}
+
+/*----------------------------------image controls----------------------------------*/
+
+img{
+    width: 100%;
+	padding-top:0;
+	padding-bottom: 0;
+}
+
+.image-frame{
+	padding-left: 25px;
+	padding-right: 45px;
+}
+
+
+.nike-right {
+  width: 48%;
+  display: flex;
+  flex-wrap: wrap;
+  float:right;
+}
+
+.nike-right div {
+  width: 100%;
+  padding-left:22.4px;
+}
+
+.nike-left {
+  width: 48%;
+  display: flex;
+  flex-wrap: wrap;
+  float:left;
+}
+
+.nike-left div {
+  width: 100%;
+  padding-left:22.4px;
+}
+
+.block{
+	float:left;
+	border-top-style: solid;
+	border-top-width: thin;
+	border-top-color:blue;
+}
+
+.block-right{
+	float:right;
+	width: 65%;
+	padding-bottom:15px;
+}
+
+.block-left {
+	float:left;
+	width: 30%;
+	padding-right: 2vw;
+}
+
+.text-block{
+	width:100%;
+	float: right;
+}
+
+/*----------------------------------horizontal scroll----------------------------------*/
+
+.slider {
+  width: 100%;
+  display: flex;
+  overflow-x: auto;
+ -webkit-overflow-scrolling: touch;
+scroll-snap-type: x mandatory;  
+}
+
+.slide {
+  width: 100%;
+  flex-shrink: 0;
+  font-family: 'Nanum Myeongjo', serif;
+  font-size: 1.15vw;
+  font-style: normal;
+  font-weight:300;
+  color:black;	
+  max-width: 66ch;
+  text-align:left;
+  text-justify: inter-word;
+  word-break: break-word;
+  font-kerning:auto;
+}
+
+.slides > div {
+  scroll-snap-align: start;
+  
+}
+
+
+/*----------------------------------Folios and Running Title----------------------------------*/
+
+
+.page-runner{
+  font-weight: 300;
+  font-family: stevie-sans, sans-serif;
+  font-size: .8vw;
+  color:black;
+  text-align: right;
+  padding-top: 2vw;
+  padding-bottom: 2vw;
+}
+
+.page-runner-white{
+  font-weight: 300;
+  font-family: stevie-sans, sans-serif;
+  font-size: .8vw;
+  color:white;
+  text-align: right;
+  padding-top: 2vw;
+  padding-bottom: 2vw;
+}
+
+
+/*----------------------------------TOC----------------------------------*/
+
+
+.toc{
+  font-family: stevie-sans, sans-serif;
+  font-weight:300;
+  font-size: 1.5vw;
+  color:black;	
+  text-align:left;
+  hyphenate-limit-chars: 6 3 2;
+  hyphenate-limit-lines: 5;
+}
+
+.title-toc{
+  font-family: 'Pilowlava';
+  font-weight: 300;
+  font-style: normal;
+  font-size: 20px;
+  text-align: left;
+  padding-top: 0px;
+  writing-mode: horizontal-tb;
+  color: black;
+}
+
+.year{
+  font-family: 'Pilowlava';
+  font-size: 6.5vw;
+  line-height: 9vw;
+  text-align: left;
+  padding-top: 0px;
+  color: black;
+}
+
+
+/*----------------------------------type setting small page----------------------------------*/
+
+
+.title-small-text{
+  font-family: 'Pilowlava';
+  font-size: 2.5vw;
+  text-align: left;
+  padding-top: 1vw;
+  writing-mode: horizontal-tb;
+  color: black;
+}
+
+.title-long-text{
+  font-family: 'Pilowlava';
+  font-size: 1.7vw;
+  text-align: left;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+  writing-mode: horizontal-tb;
+  color: black;
+}
+
+.title-large{
+  font-family: 'Pilowlava';
+  font-size: 8.8vw;
+  text-align: left;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+  writing-mode: horizontal-tb;
+  color: black;
+}
+
+
+.sub-heading{
+  font-family: stevie-sans, sans-serif;
+  font-weight:600;
+  font-size: 1.3vw;
+  hyphens: auto;
+  word-break: break-word;
+  text-justify: inter-word;
+}
+
+.sub-heading-nike{
+  font-family: stevie-sans, sans-serif;
+  font-weight:300;
+  font-size: 1.3vw;
+  hyphens: auto;
+  word-break: break-word;
+  text-justify: inter-word;
+}
+
+
+.body-type-small-text-large{
+  font-family: 'Nanum Myeongjo', serif;
+  font-style: normal;
+  font-weight:300;
+  font-size: 1.09vw;
+  line-height: 1.4vw;
+  color:black;	
+  max-width: 70ch;
+  text-align:left;
+  word-break: break-word;
+  font-kerning:auto;
+}
+
+p {
+    -webkit-hyphens: auto;
+    -webkit-hyphenate-limit-before: 3;
+    -webkit-hyphenate-limit-after: 3;
+    -webkit-hyphenate-limit-chars: 6 3 3;
+    -webkit-hyphenate-limit-lines: 2;
+    -webkit-hyphenate-limit-last: always;   
+    -webkit-hyphenate-limit-zone: 8%;
+
+    -moz-hyphens: auto;
+    -moz-hyphenate-limit-chars: 6 3 3;
+    -moz-hyphenate-limit-lines: 2;  
+    -moz-hyphenate-limit-last: always;
+    -moz-hyphenate-limit-zone: 8%;
+
+    -ms-hyphens: auto;
+    -ms-hyphenate-limit-chars: 6 3 3;
+    -ms-hyphenate-limit-lines: 2;
+    -ms-hyphenate-limit-last: always;   
+    -ms-hyphenate-limit-zone: 8%;
+
+    hyphens: auto;
+    hyphenate-limit-chars: 6 3 3;
+    hyphenate-limit-lines: 2;
+    hyphenate-limit-last: always;   
+    hyphenate-limit-zone: 8%;
+}
+
+
+.body-type-small-text-large-sans{
+  font-family: 'Nanum Myeongjo', serif;
+  font-style: normal;
+  font-weight:300;
+  font-size: 1.3vw;
+  color:black;	
+  max-width: 70ch;
+  text-align:left;
+  text-justify: inter-word;
+  word-break: break-word;
+  font-kerning:auto;
+}
+
+p{
+     -webkit-hyphens: auto;
+     -webkit-hyphenate-limit-before: 3;
+     -webkit-hyphenate-limit-after: 3;
+     -webkit-hyphenate-limit-chars: 6 3 3;
+     -webkit-hyphenate-limit-lines: 2;
+     -webkit-hyphenate-limit-last: always;
+     -webkit-hyphenate-limit-zone: 8%;
+     -moz-hyphens: auto;
+     -moz-hyphenate-limit-chars: 6 3 3;
+     -moz-hyphenate-limit-lines: 2;
+     -moz-hyphenate-limit-last: always;
+     -moz-hyphenate-limit-zone: 8%;
+     -ms-hyphens: auto;
+     -ms-hyphenate-limit-chars: 6 3 3;
+     -ms-hyphenate-limit-lines: 2;
+     -ms-hyphenate-limit-last: always;
+     -ms-hyphenate-limit-zone: 8%;
+     hyphens: auto;
+     hyphenate-limit-chars: 6 3 3;
+     hyphenate-limit-lines: 2;
+     hyphenate-limit-last: always;
+     hyphenate-limit-zone: 8%;
+	 widows:2; 
+	 orphans:2;
+	letter-spacing: .1pt;
+}
+
+.intro-text-sans{
+  font-family: stevie-sans, sans-serif;
+  font-style: normal;
+  font-weight:300;
+  font-size: .85vw;
+  color:black;	
+  max-width: 66ch;
+  text-align:left;
+  text-justify: inter-word;
+  word-break: break-word;
+  padding-top: 2vw;
+  padding-bottom: .8vw;
+  font-kerning:auto;
+}
+
+.list{
+  font-family: stevie-sans, sans-serif;
+  font-style: normal;
+  font-weight:300;
+  font-size: 1.5vw;
+  color:white;	
+  max-width: 70ch;
+  text-align:left;
+  text-justify: inter-word;
+  hyphens:auto;
+  word-break: break-word;
+  font-kerning:auto;
+}
+
+
+.author{
+  font-family: stevie-sans, sans-serif;
+  font-style: normal;
+  font-size: .8vw;
+  color:black;	
+  text-align:left;
+  max-width: 66ch;
+  hyphens: auto;
+  word-break: break-word;
+  text-justify: inter-word;
+  padding-top: 1.5vh;
+  padding-bottom: 1.5vh;
+}
+
+.caption{
+  font-weight: 600;
+  font-family: stevie-sans, sans-serif;
+  font-size: .7vw;
+  line-height: 1vw;
+  color:black;
+  text-align: left;
+  padding-top: .8vh;
+  padding-bottom: .8vh;
+}
+
+.footnote{
+  font-weight: 300;
+  font-family: stevie-sans, sans-serif;
+  font-size: .6vw;
+  color:black;
+  text-align: left;
+  padding-top: .9vh;
+  padding-bottom: 1vh;
+}
+
+hr.new1 {
+  border-top: 1px solid blue;
+}
+
+/*----------------------------------hiding things----------------------------------*/
+
+
+.hide{
+	visibility: hidden;
+}
+
+/*webkits*/
+
+::-webkit-scrollbar {
+    display: none;
+}
+
