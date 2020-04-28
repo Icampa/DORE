@@ -15,7 +15,7 @@ color:blue;
 @font-face {
 	font-family: 'Pilowlava'; 
 	font-weight: normal; 
-	src: url("../../FontBase/Pilowlava-Regular.otf") format('opentype'); 
+	src: url("../images/TOC/Pilowlava-Regular.otf"); 
 }
 
 #container {
